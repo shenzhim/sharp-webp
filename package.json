@@ -1,0 +1,19 @@
+{
+  "name": "sharp-webp-cli",
+  "version": "1.0.0",
+  "description": "image webp format",
+  "bin": {
+    "sharp-webp": "bin/sharp-webp"
+  },
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "commander": "^2.14.1",
+    "semver": "^5.5.0",
+    "sharp": "^0.19.0"
+  },
+  "devDependencies": {},
+  "author": {
+    "name": "shenzm <szmalq@163.com>"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,54 @@
+#! /usr/bin/env node
+var path = require('path')
+var program = require('commander')
+var chalk = require('chalk')
+var sharp = require('sharp')
+var fs = require('fs')
+
+/**
+ * Usage.
+ */
+
+program
+  .usage('<options>')
+  .option('-i, --input', 'source image file or image directory')
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # convert JPEG, PNG images to WebP images'))
+  console.log('    $ sharp-webp -i source-images')
+  console.log()
+})
+
+/**
+ * Help.
+ */
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+var sourcePath = program.args[0];
+if (!fs.existsSync(sourcePath)) {
+  console.log(chalk.red('source images is not exists'))
+} else {
+  function convert (filepath) {
+    var stat = fs.lstatSync(filepath)
+    if (stat.isDirectory()) {
+      fs.readdirSync(filepath).forEach(function(filename){
+        convert(path.join(filepath, filename))
+      })
+    } else if (stat.isFile()) {
+      var ext = path.extname(filepath)
+      if (/(jpe?g|png)$/.test(ext)) sharp(filepath).webp().toFile(filepath + '.webp')
+    }
+  }
+  convert(sourcePath)
+}
