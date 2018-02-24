@@ -1,6 +1,6 @@
 {
   "name": "sharp-webp-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "image webp format",
   "bin": {
     "sharp-webp": "bin/sharp-webp"
@@ -14,6 +14,11 @@
   "devDependencies": {},
   "author": {
     "name": "shenzm <szmalq@163.com>"
+  },
+  "homepage": "https://github.com/shenzhim/sharp-webp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shenzhim/sharp-webp.git"
   },
   "license": "MIT"
 }
